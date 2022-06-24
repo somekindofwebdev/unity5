@@ -317,6 +317,7 @@
         }
     }
 </script>
+<script src="js/shared.js"></script>
 
 <!-- -->
 

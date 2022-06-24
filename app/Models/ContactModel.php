@@ -1,15 +1,19 @@
 <?php
 
+namespace App\Models;
+
 use CodeIgniter\Model;
 
 class ContactModel extends Model
 {
-    public function getContact($slug = false)
+    protected $table = 'Contacts';
+    
+    public function getContact($id = null)
     {
-        if ($slug === false) {
+        if ($id === null) {
             return $this->findAll();
         }
 
-        return $this->where(['slug' => $slug])->first();
+        return $this->where(['ID' => $id])->first();
     }
 }
