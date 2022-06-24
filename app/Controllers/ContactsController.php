@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
-use CodeIgniter\API\ResponseTrait;
+//use CodeIgniter\API\ResponseTrait;
 use App\Models\ContactModel;
 
 class ContactsController extends ResourceController
@@ -13,8 +13,9 @@ class ContactsController extends ResourceController
 
     public function index()
     {
+        header("Content-Type: application/json");
         $model = model(ContactModel::class);
-        return json_encode($model->getContact());
+        return $this->response->setJSON($model->getContact());
     }
 
     // ...

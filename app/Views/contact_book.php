@@ -6,17 +6,24 @@
 createApp({
   data() {
     return {
-      todoId: 1,
-      todoData: null
+      contactId: 1,
+      contactData: null
     }
   },
   methods: {
     async fetchData() {
-      this.todoData = null
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${this.todoId}`
+      this.contactData = null
+      fetch(
+        'Contacts',
+        {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        }
       )
-      this.todoData = await res.json()
+      .then(response => response.json())
+      .then(data => this.contactData = data)
     }
   },
   mounted() {
@@ -26,8 +33,10 @@ createApp({
 </script>
 
 <div id="app">
-  <p>Todo id: {{ todoId }}</p>
-  <button @click="todoId++">Fetch next todo</button>
-  <p v-if="!todoData">Loading...</p>
-  <pre v-else>{{ todoData }}</pre>
+    <p>contact id: {{ contactId }}</p>
+    <button @click="contactId++">Fetch next contact</button>
+    <p v-if="!contactData">Loading...</p>
+    <ul>
+        <li v-for="c in contactData">{{ c["first_name"] }}</li>
+    </ul>
 </div>
