@@ -23,3 +23,11 @@ body, #app {
 .contact p {
     margin-top: 0;
 }
+
+#contact-editor {
+    list-style: none;
+}
+
+#contact-editor li {
+    margin: 12px 0;
+}
