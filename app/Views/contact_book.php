@@ -42,10 +42,10 @@
             },
             updateContact() {
                 fetch(
-                    'Contacts/' + this.contactId,
+                    'Contacts/' + this.contactId + 1,
                     {
                         method: "PATCH",
-                        body: { contact: this.contact }
+                        body: JSON.stringify(this.contact)
                     }
                 )
             }
@@ -66,7 +66,7 @@
             <contact
                      v-for="c in activeContactData"
                      :contact="c"
-                     @click="this.contactId = c.ID - 1"
+                     @click="this.contactId = c.contact_id - 1"
                      ></contact>
         </ul>
     </div>

@@ -3,4 +3,5 @@ TODO
 2. Update contact
 3. Validation https://codeigniter.com/user_guide/incoming/controllers.html
 4. Add contact https://vuejs.org/tutorial/#step-8 submit.prevent
-5. Styling
+5. Tidy code - comment everything
+6. Styling
