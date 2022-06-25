@@ -17,12 +17,12 @@
         },
         computed: {
             activeContactData() {
-                return this.hideInactive ? this.contactData.filter(c => c.active == true) : this.contactData;
+                return this.hideInactive ? this.contactData.filter(c => c.active) : this.contactData;
             }
         },
         watch: {
             contactId(newId) {
-                this.contact = this.contactData[this.contactId - 1];
+                this.contact = this.contactData[newId - 1];
             }
         },
         methods: {
@@ -114,7 +114,7 @@
         </li>
         <li>
             <label for="editor-active">Active:</label>
-            <input id="editor-active" type=checkbox v-model="contact.active"  />
+            <input id="editor-active" type=checkbox value="1" v-model="contact.active"  />
         </li>
         <button>Update contact</button>
     </form>

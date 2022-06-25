@@ -13,6 +13,7 @@ class ContactModel extends Model
     
     public function getContact($id = null)
     {
+        // TODO don't need the $id - always returns all in the final app
         if ($id === null) {
             return $this->findAll();
         }

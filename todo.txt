@@ -3,6 +3,25 @@ TODO
 2. Update contact - done
 3. Validation https://codeigniter.com/user_guide/incoming/controllers.html
 4. Add contact https://vuejs.org/tutorial/#step-8 submit.prevent - done
-    
 5. Tidy code - comment everything
 6. Styling
+
+
+PROCESS
+1. Read up on CodeIgniter
+2. Install and configure
+3. Start ContactController - just returning list of contacts as static JSON
+4. Stub ContactModel
+5. Start view
+6. Create database
+7. Implement ContactModel - return list of contacts from db
+8. Complete View
+9. Begin Show Active - got stuck
+10. Implement Update route
+11. Implement Create route
+12. Host working but incomplete version, including database
+13. Push to GitHub
+14. Read up on CodeIgniter Validation - poss to use with AJAX?
+
+REMEMBER
+1. Hosting - upload everything except .git and Database.php
