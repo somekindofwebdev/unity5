@@ -440,3 +440,12 @@ in APPPATH/Models/ContactModel.php on line 78.
  5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
  6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
  7 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-06-25 12:00:24 --> Undefined property: stdClass::$11
+in APPPATH/Models/ContactModel.php on line 31.
+ 1 APPPATH/Models/ContactModel.php(31): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/ContactsController.php(41): App\Models\ContactModel->updateContact()
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ContactsController->update()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')

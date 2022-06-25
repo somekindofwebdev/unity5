@@ -22,7 +22,7 @@
         },
         watch: {
             contactId(newId) {
-                this.contact = this.contactData[this.contactId];
+                this.contact = this.contactData[this.contactId - 1];
             }
         },
         methods: {
@@ -42,7 +42,7 @@
             },
             updateContact() {
                 fetch(
-                    'Contacts/' + this.contactId + 1,
+                    'Contacts/' + this.contactId,
                     {
                         method: "PATCH",
                         body: JSON.stringify(this.contact)
@@ -75,7 +75,7 @@
             <contact
                      v-for="c in activeContactData"
                      :contact="c"
-                     @click="this.contactId = c.contact_id - 1"
+                     @click="this.contactId = c.contact_id"
                      ></contact>
         </ul>
     </div>
