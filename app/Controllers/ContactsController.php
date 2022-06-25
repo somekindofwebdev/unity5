@@ -28,10 +28,14 @@ class ContactsController extends ResourceController
     
     // HTTP PATCH Route: Contacts/id
     public function update($id = null) {
-        $request = service('request');
         
+        // Get $contact from request body
+        $request = service('request');
         $contact = $request->getJSON();
+        
+        // Error if contact not received
         if ($contact == null) { return "Contact not received"; }
+        
         // Pass $contact to model for update
         $model = model(ContactModel::class);
         return $model->updateContact($id, $contact);
@@ -40,10 +44,19 @@ class ContactsController extends ResourceController
     }
     
     // HTTP POST Route: Contacts
-    public function create($contact = null) {
+    public function create() {
+        // TODO DRY this
+        
+        // Get $contact from request body
+        $request = service('request');
+        $contact = $request->getJSON();
+        
+        // Error if contact not received
+        if ($contact == null) { return "Contact not received"; }
+        
         // Pass $contact to model for creation
         $model = model(ContactModel::class);
-        $model->addContact($contact);
+        return $model->addContact($contact);
     }
 
     // ...

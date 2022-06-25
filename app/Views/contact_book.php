@@ -48,6 +48,15 @@
                         body: JSON.stringify(this.contact)
                     }
                 )
+            },
+            addContact() {
+                fetch(
+                    'Contacts',
+                    {
+                        method: "POST",
+                        body: JSON.stringify(this.contact)
+                    }
+                )
             }
         },
         components: {
@@ -70,7 +79,7 @@
                      ></contact>
         </ul>
     </div>
-    <ul id=contact-editor>
+    <form id=contact-editor @submit.prevent="updateContact">
         <li>
             <label for="editor-firstname">First name:</label>
             <input id="editor-firstname" type=text v-model="contact.first_name"  />
@@ -103,6 +112,11 @@
             <label for="editor-email">Email:</label>
             <input id="editor-email" type=text v-model="contact.email"  />
         </li>
-        <button @click="updateContact">Update contact</button>
-    </ul>
+        <li>
+            <label for="editor-active">Active:</label>
+            <input id="editor-active" type=checkbox v-model="contact.active"  />
+        </li>
+        <button>Update contact</button>
+    </form>
+    <button @click="addContact">Add contact</button>
 </div>

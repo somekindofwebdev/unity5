@@ -66,13 +66,27 @@ class ContactModel extends Model
         // Connect to the database
         $db = db_connect();
         
-        // Prepared query - avoid SQL injection
-        $pQuery = $db->prepare(static function ($db) {
-                return $db->table('user')->insert([
-                    'name'    => 'x',
-                    'email'   => 'y',
-                    'country' => 'US',
-            ]);
-        });
+        $data = [
+                    'first_name' => $contact->first_name,
+                    'middle_name' => $contact->middle_name,
+                    'last_name' => $contact->last_name,
+                    'date_of_birth' => $contact->date_of_birth,
+                    'address' => $contact->address,
+                    'postcode' => $contact->postcode,
+                    'telephone_number' => $contact->telephone_number,
+                    'email' => $contact->email,
+                    'active' => $contact->active
+        ];
+
+        // Run the Query
+        try {
+            $db->table('Contacts')->insert($data);
+            return "Contact added";
+        }
+        catch (Exception $ex) {
+//            http_response_code(500);
+            return "DB error";
+        }
+        
     }
 }
