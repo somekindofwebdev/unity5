@@ -17,6 +17,10 @@ class ContactsController extends ResourceController
         $model = model(ContactModel::class);
         return $this->response->setJSON($model->getContact());
     }
+    
+    public function update($id = null) {
+        return "sdf";
+    }
 
     // ...
 }

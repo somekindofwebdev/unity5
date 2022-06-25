@@ -10,13 +10,14 @@
         data() {
             return {
                 contactId: 1,
-                contactData: null,
-                contact: {}
+                contactData: [],
+                contact: {},
+                hideInactive: false
             }
         },
         computed: {
-            activatedContactData() {
-                
+            activeContactData() {
+                return this.hideInactive ? this.contactData.filter(c => c.active == true) : this.contactData;
             }
         },
         watch: {
@@ -26,7 +27,7 @@
         },
         methods: {
             async fetchData() {
-                this.contactData = null
+                this.contactData = []
                 fetch(
                     'Contacts',
                     {
@@ -39,8 +40,14 @@
                 .then(response => response.json())
                 .then(data => this.contactData = data)
             },
-            deactivate() {
-                this.contact.inactive = !this.contact.inactive;
+            updateContact() {
+                fetch(
+                    'Contacts/' + this.contactId,
+                    {
+                        method: "PATCH",
+                        body: { contact: this.contact }
+                    }
+                )
             }
         },
         components: {
@@ -53,10 +60,11 @@
 </script>
 
 <div id="app">
+    <button @click="hideInactive = !hideInactive">{{ hideInactive ? 'Show all' : 'Hide inactive contacts' }}</button>
     <div id=contact-list>
         <ul>
             <contact
-                     v-for="c in contactData"
+                     v-for="c in activeContactData"
                      :contact="c"
                      @click="this.contactId = c.ID - 1"
                      ></contact>
@@ -95,5 +103,6 @@
             <label for="editor-email">Email:</label>
             <input id="editor-email" type=text v-model="contact.email"  />
         </li>
+        <button @click="updateContact">Update contact</button>
     </ul>
 </div>
