@@ -14,26 +14,34 @@
                 contact: {}
             }
         },
+        computed: {
+            activatedContactData() {
+                
+            }
+        },
         watch: {
             contactId(newId) {
                 this.contact = this.contactData[this.contactId];
             }
         },
         methods: {
-        async fetchData() {
-          this.contactData = null
-          fetch(
-            'Contacts',
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                }
+            async fetchData() {
+                this.contactData = null
+                fetch(
+                    'Contacts',
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        }
+                    }
+                )
+                .then(response => response.json())
+                .then(data => this.contactData = data)
+            },
+            deactivate() {
+                this.contact.inactive = !this.contact.inactive;
             }
-          )
-          .then(response => response.json())
-          .then(data => this.contactData = data)
-        }
         },
         components: {
             Contact
@@ -49,11 +57,7 @@
         <ul>
             <contact
                      v-for="c in contactData"
-                     :first_name="c.first_name"
-                     :middle_name="c.middle_name"
-                     :last_name="c.last_name"
-                     :address="c.address"
-                     :postcode="c.postcode"
+                     :contact="c"
                      @click="this.contactId = c.ID - 1"
                      ></contact>
         </ul>
