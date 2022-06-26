@@ -64,7 +64,7 @@
             },
             addContact() {        
                 // Add to contactData
-                //this.contactData.push(contact);
+                this.contactData.push(this.contact);
                 
                 // Create new contact
                 fetch(
