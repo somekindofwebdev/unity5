@@ -3,22 +3,46 @@ body, #app {
     padding: 0;
 }
 
+header {
+    letter-spacing: 4px;
+    color: white;
+}
+
+button, input[type=button] {
+    background-color: #b3cce5;
+    border: none;
+    border: 1px solid lightslategray;
+    cursor: pointer;
+}
+
 #app {
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-wrap: nowrap;
-    background-image: url(../images/bg.jpg);
+    background-image: url(../images/bg.JPG);
     background-size: cover;
+    background-position: 50% 50%;
 }
 
 #contact-list, #contact-editor {
+    background-color: white;
     margin: 12.5vh 12.5vw;
     padding: 9px;
     width: 25vw;
     height: 75vh;
     overflow-y: scroll;
     box-shadow: 0 0 25px 3px #363636;
+}
+
+#contact-list {
+    margin-left: 18vw;
+    margin-right: 7vw;
+}
+
+#contact-editor {
+    margin-left: 7vw;
+    margin-right: 18vw;
 }
 
 #contact-list ul {
@@ -32,7 +56,7 @@ body, #app {
 }
 
 .contact:hover {
-    background-color: lightslategray;
+    background-color: #b3cce5;
 }
 
 .contact h3 {

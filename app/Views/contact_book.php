@@ -117,9 +117,9 @@
         }
     }).mount('#app')
 </script>
-
 <div id="app">
     <div id=contact-list>
+        <h3>Contacts</h3>
         <button @click="hideInactive = !hideInactive">{{ hideInactive ? 'Show all' : 'Hide inactive contacts' }}</button>
         <ul>
             <contact
@@ -131,6 +131,7 @@
     </div>
     <form id=contact-editor @submit.prevent="updateContact">
         <h3>Edit contact</h3>
+        <p>To add a contact, overwrite these details and click "Add contact"</p>
         <!-- No frontend validation - challenge is to validate AJAX request -->
         <div>{{ message }}</div>
         <li>
@@ -166,7 +167,7 @@
             <input id="editor-email" type=text v-model="contact.email"  />
         </li>
         <li>
-            <input type=button id="editor-active" @click="contact.active = !contact.active" :value=" contact.active ? 'Disable contact' : 'Enable contact'"/>
+            <input type=button id="editor-active" @click="contact.active = !contact.active" :value=" contact.active == 1 ? 'Disable contact' : 'Enable contact'"/>
         </li>
         <button>Update contact</button>
         <button @click="addContact">Add contact</button>
