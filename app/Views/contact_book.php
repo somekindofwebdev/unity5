@@ -68,13 +68,13 @@
                 )
                 .then(response => {
                     if (!response.ok) {
-                        response.json().then(j => this.message = j.messages.error);
+                        response.json().then(j => { throw new Error(j.messages.error) });
                     }
                     else {
-                        var j = response.json();
-                        this.message = "Contact ID " + j.toString() + " updated"
+                        return response.json();
                     }
                 })
+                .then(j => this.message = "Contact ID " + j.toString() + " updated")
                 .catch(err => this.message = err)
                 
             },
@@ -92,12 +92,13 @@
                 )
                 .then(response => {
                     if (!response.ok) {
-                        response.json().then(j => this.message = j.messages.error);
+                        response.json().then(j => { throw new Error(j.messages.error) });
                     }
                     else {
-                        response.json().then(j => this.message = "Contact added with ID " + j.toString());
+                        return response.json();
                     }
                 })
+                .then(j => this.message = "Contact added with ID " + j.toString())
                 .catch(err => this.message = err)
             },
             errorCheck(response) {
@@ -129,7 +130,7 @@
                      ></contact>
         </ul>
     </div>
-    <form id=contact-editor @submit.prevent="updateContact">
+    <form id=contact-editor @submit.prevent>
         <h3>Edit contact</h3>
         <p>To add a contact, overwrite these details and click "Add contact"</p>
         <!-- No frontend validation - challenge is to validate AJAX request -->
@@ -169,7 +170,7 @@
         <li>
             <input type=button id="editor-active" @click="contact.active = !contact.active" :value=" contact.active == 1 ? 'Disable contact' : 'Enable contact'"/>
         </li>
-        <button>Update contact</button>
+        <button @click="updateContact">Update contact</button>
         <button @click="addContact">Add contact</button>
     </form>
 </div>
