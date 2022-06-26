@@ -43,7 +43,7 @@ class ContactModel extends Model
         // Run the Query
         try {
             $db->table('Contacts')->update($data, ['contact_id' => $id]);
-            return "Contact updated";
+            return json_encode($id);
         }
         catch (Exception $ex) {
 //            http_response_code(500);

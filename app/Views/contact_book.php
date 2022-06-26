@@ -60,7 +60,7 @@
                     }
                 )
                 .then(response => this.errorCheck(response))
-                .then(j => this.message = j)
+                .then(j => this.message = "Contact ID " + j.toString() + " updated")
             },
             addContact() {        
                 // Add to contactData
@@ -76,10 +76,9 @@
                 )
                 .then(response => this.errorCheck(response))
                 .then(j => {
-                    console.log(j);
                     this.contact.contact_id = j;
                     this.contactId = j;
-                    this.message = j;
+                    this.message = "Contact added with ID " + j.toString();
                 })
             },
             errorCheck(response) {

@@ -23,13 +23,15 @@ PROCESS
 13. Push to GitHub
 14. Read up on CodeIgniter Validation - poss to use with AJAX?
 15. Finish Show Active
+16. Fix add/update
+17. Start on validation
 
 REMEMBER
 1. Hosting - upload everything except .git and Database.php
 2. Switch to production mode
 
 BUGS
-1. Don't click a contact, but type a new one in, add, and then update.  Updates contact with contact_id = 1
-2. Click a contact, overwrite details, add, then update.  Updates contact with id = the one you selected, not the new one
-3. Clicking contact needs to find by ID, not array index - done
-4. contact not set at startup
+1. Don't click a contact, but type a new one in, add, and then update.  Updates contact with contact_id = 1 - fixed
+2. Click a contact, overwrite details, add, then update.  Updates contact with id = the one you selected, not the new one - fixed
+3. Clicking contact needs to find by ID, not array index - fixed
+4. contact not set at startup - fixed
