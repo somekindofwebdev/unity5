@@ -17,9 +17,7 @@ button, input[type=button] {
 
 #app {
     width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-wrap: nowrap;
+    height: 100%;
     background-image: url(../images/bg.JPG);
     background-size: cover;
     background-position: 50% 50%;
@@ -27,22 +25,17 @@ button, input[type=button] {
 
 #contact-list, #contact-editor {
     background-color: white;
-    margin: 12.5vh 12.5vw;
+    margin: auto;
     padding: 9px;
     width: 25vw;
+    min-width: 400px;
     height: 75vh;
     overflow-y: scroll;
     box-shadow: 0 0 25px 3px #363636;
 }
 
 #contact-list {
-    margin-left: 18vw;
-    margin-right: 7vw;
-}
-
-#contact-editor {
-    margin-left: 7vw;
-    margin-right: 18vw;
+    margin-bottom: 20px;
 }
 
 #contact-list ul {
@@ -73,4 +66,27 @@ button, input[type=button] {
 
 #contact-editor li {
     margin: 12px 0;
+}
+
+@media all and (min-width: 850px) {
+    #app {
+        height: 100vh;
+        display: flex;
+    }
+    
+    #contact-list {
+        margin-bottom: auto;
+    }
+}
+
+@media all and (min-width: 1600px) {
+    #contact-list {
+        margin-left: 18vw;
+        margin-right: 7vw;
+    }
+
+    #contact-editor {
+        margin-left: 7vw;
+        margin-right: 18vw;
+    }
 }
