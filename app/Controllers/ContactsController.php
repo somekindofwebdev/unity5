@@ -37,6 +37,14 @@ class ContactsController extends ResourceController
         if ($contact == null) { return "Contact not received"; }
         
         // Validate
+        // CodeIgniter has Validation library - but it needs a form, or FormData
+        // Too late to rewrite all the methods to accept FormData now!
+        // Could also have done two separate server requests for validation and submission
+        
+        $validationErrors = $this->validateContact($contact);
+        if (!empty($validationErrors)) {
+            return $this->failValidationError(join(PHP_EOL, $validationErrors));
+        }
         
         // Pass $contact to model for update
         $model = model(ContactModel::class);
@@ -60,10 +68,38 @@ class ContactsController extends ResourceController
         if ($contact == null) { return "Contact not received"; }
         
         // Validate
+        // CodeIgniter has Validation library - but it needs a form, or FormData
+        // Too late to rewrite all the methods to accept FormData now!
+        // Could also have done two separate server requests for validation and submission
+        
+        $validationErrors = $this->validateContact($contact);
+        if (!empty($validationErrors)) {
+            return $this->failValidationError(join(PHP_EOL, $validationErrors));
+        }
         
         // Pass $contact to model for creation
         $model = model(ContactModel::class);
         return $this->response->setJSON($model->addContact($contact));
+    }
+    
+    public function validateContact($contact) {
+        $errors = [];
+        
+        // Check names present
+        if (empty($contact->first_name)) {
+            array_push($errors, "Please enter a first name");
+        }
+        
+        if (empty($contact->last_name)) {
+            array_push($errors, "Please enter a last name");
+        }
+        
+        // Check email format
+        if (!filter_var($contact->email, FILTER_VALIDATE_EMAIL)) {
+           array_push($errors, "Please check email address format"); 
+        }
+        
+        return $errors;
     }
 
     // ...

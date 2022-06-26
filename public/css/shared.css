@@ -8,6 +8,8 @@ body, #app {
     height: 100vh;
     display: flex;
     flex-wrap: nowrap;
+    /*background-image: url(/images/bg.jpg);*/
+    background-size: cover;
 }
 
 #contact-list, #contact-editor {

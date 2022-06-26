@@ -48,8 +48,15 @@
                         }
                     }
                 )
-                .then(response => this.errorCheck(response))
+                .then(response => {
+                    var j = response.json();
+                    if (!response.ok) {
+                        response.json().then(j => this.message = j.messages.error);
+                    }
+                    return j;
+                })
                 .then(data => this.contactData = data)
+                .catch(err => this.message = err)
             },
             updateContact() {
                 fetch(
@@ -59,8 +66,17 @@
                         body: JSON.stringify(this.contact)
                     }
                 )
-                .then(response => this.errorCheck(response))
-                .then(j => this.message = "Contact ID " + j.toString() + " updated")
+                .then(response => {
+                    if (!response.ok) {
+                        response.json().then(j => this.message = j.messages.error);
+                    }
+                    else {
+                        var j = response.json();
+                        this.message = "Contact ID " + j.toString() + " updated"
+                    }
+                })
+                .catch(err => this.message = err)
+                
             },
             addContact() {        
                 // Add to contactData
@@ -74,12 +90,15 @@
                         body: JSON.stringify(this.contact)
                     }
                 )
-                .then(response => this.errorCheck(response))
-                .then(j => {
-                    this.contact.contact_id = j;
-                    this.contactId = j;
-                    this.message = "Contact added with ID " + j.toString();
+                .then(response => {
+                    if (!response.ok) {
+                        response.json().then(j => this.message = j.messages.error);
+                    }
+                    else {
+                        response.json().then(j => this.message = "Contact added with ID " + j.toString());
+                    }
                 })
+                .catch(err => this.message = err)
             },
             errorCheck(response) {
                 var j = response.json();
@@ -111,6 +130,7 @@
         </ul>
     </div>
     <form id=contact-editor @submit.prevent="updateContact">
+        <!-- No frontend validation - challenge is to validate AJAX request -->
         <div>{{ message }}</div>
         <li>
             <label for="editor-firstname">First name:</label>

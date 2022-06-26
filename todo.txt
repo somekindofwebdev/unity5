@@ -25,6 +25,8 @@ PROCESS
 15. Finish Show Active
 16. Fix add/update
 17. Start on validation
+18. Validation failed (ahahaha) - write manually
+19. Error handling
 
 REMEMBER
 1. Hosting - upload everything except .git and Database.php
@@ -35,3 +37,7 @@ BUGS
 2. Click a contact, overwrite details, add, then update.  Updates contact with id = the one you selected, not the new one - fixed
 3. Clicking contact needs to find by ID, not array index - fixed
 4. contact not set at startup - fixed
+5. Active status not reading/writing to db
+
+LEARNING
+1. CodwIgniter validation requires FormData!  Changing now would mean refactoring a lot of code
