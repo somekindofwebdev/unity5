@@ -36,6 +36,7 @@
                 this.contact = this.contactData.find(c => c.contact_id == newId);
             }
         },
+        // TODO some of the below can probably be refactored into a function to keep it DRY
         methods: {
             async fetchData() {
                 this.contactData = []
@@ -51,14 +52,15 @@
                 .then(response => {
                     var j = response.json();
                     if (!response.ok) {
-                        response.json().then(j => this.message = j.messages.error);
+                        response.json().then(jErr => this.message = jErr.messages.error);
+                        throw new Error("Error occurred");
                     }
                     return j;
                 })
                 .then(data => this.contactData = data)
-                .catch(err => this.message = err)
+                .catch(err => console.log(err))
             },
-            updateContact() {
+            async updateContact() {
                 fetch(
                     'Contacts/' + this.contactId,
                     {
@@ -68,17 +70,18 @@
                 )
                 .then(response => {
                     if (!response.ok) {
-                        response.json().then(j => { throw new Error(j.messages.error) });
+                        response.json().then(jErr => this.message = jErr.messages.error);
+                        throw new Error("Validation error");
                     }
                     else {
                         return response.json();
                     }
                 })
                 .then(j => this.message = "Contact ID " + j.toString() + " updated")
-                .catch(err => this.message = err)
+                .catch(err => console.log(err))
                 
             },
-            addContact() {        
+            async addContact() {        
                 // Add to contactData
                 this.contactData.push(this.contact);
                 
@@ -92,14 +95,15 @@
                 )
                 .then(response => {
                     if (!response.ok) {
-                        response.json().then(j => { throw new Error(j.messages.error) });
+                        response.json().then(jErr => this.message = jErr.messages.error);
+                        throw new Error("Validation error");
                     }
                     else {
                         return response.json();
                     }
                 })
                 .then(j => this.message = "Contact added with ID " + j.toString())
-                .catch(err => this.message = err)
+                .catch(err => console.log(err))
             },
             errorCheck(response) {
                 var j = response.json();
