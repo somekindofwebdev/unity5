@@ -1,7 +1,7 @@
 TODO
 1. Show active - done
 2. Update contact - done
-3. Validation https://codeigniter.com/user_guide/incoming/controllers.html
+3. Validation https://codeigniter.com/user_guide/incoming/controllers.html - done
 4. Add contact https://vuejs.org/tutorial/#step-8 submit.prevent - done
 5. Tidy code - comment everything
 6. Styling

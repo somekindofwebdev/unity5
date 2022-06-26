@@ -119,8 +119,8 @@
 </script>
 
 <div id="app">
-    <button @click="hideInactive = !hideInactive">{{ hideInactive ? 'Show all' : 'Hide inactive contacts' }}</button>
     <div id=contact-list>
+        <button @click="hideInactive = !hideInactive">{{ hideInactive ? 'Show all' : 'Hide inactive contacts' }}</button>
         <ul>
             <contact
                      v-for="c in activeContactData"
@@ -130,6 +130,7 @@
         </ul>
     </div>
     <form id=contact-editor @submit.prevent="updateContact">
+        <h3>Edit contact</h3>
         <!-- No frontend validation - challenge is to validate AJAX request -->
         <div>{{ message }}</div>
         <li>
@@ -168,6 +169,6 @@
             <input type=button id="editor-active" @click="contact.active = !contact.active" :value=" contact.active ? 'Disable contact' : 'Enable contact'"/>
         </li>
         <button>Update contact</button>
+        <button @click="addContact">Add contact</button>
     </form>
-    <button @click="addContact">Add contact</button>
 </div>
