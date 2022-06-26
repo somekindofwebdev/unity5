@@ -1,7 +1,7 @@
+<title>Contact Book</title>
 <link rel=stylesheet href="css/shared.css"/>
 
 <script src="https://unpkg.com/vue@3"></script>
-
 <script type="module">
     const { createApp } = Vue
     import Contact from "./js/contact.js"
@@ -11,8 +11,19 @@
             return {
                 contactId: 1,
                 contactData: [],
-                contact: {},
-                hideInactive: false
+                contact: {
+                    first_name: "",
+                    middle_name: "",
+                    last_name: "",
+                    date_of_birth: "",
+                    address: "",
+                    postcode: "",
+                    telephone_number: "",
+                    email: "",
+                    active: 1
+                },
+                hideInactive: false,
+                message: null
             }
         },
         computed: {
@@ -22,7 +33,7 @@
         },
         watch: {
             contactId(newId) {
-                this.contact = this.contactData[newId - 1];
+                this.contact = this.contactData.find(c => c.contact_id == newId);
             }
         },
         methods: {
@@ -37,7 +48,7 @@
                         }
                     }
                 )
-                .then(response => response.json())
+                .then(response => this.errorCheck(response))
                 .then(data => this.contactData = data)
             },
             updateContact() {
@@ -48,8 +59,14 @@
                         body: JSON.stringify(this.contact)
                     }
                 )
+                .then(response => this.errorCheck(response))
+                .then(j => this.message = j)
             },
-            addContact() {
+            addContact() {        
+                // Add to contactData
+                //this.contactData.push(contact);
+                
+                // Create new contact
                 fetch(
                     'Contacts',
                     {
@@ -57,6 +74,21 @@
                         body: JSON.stringify(this.contact)
                     }
                 )
+                .then(response => this.errorCheck(response))
+                .then(j => {
+                    console.log(j);
+                    this.contact.contact_id = j;
+                    this.contactId = j;
+                    this.message = j;
+                })
+            },
+            errorCheck(response) {
+                var j = response.json();
+                if (!response.ok) {
+                    this.message = j;
+                    throw new Error("Error");
+                }
+                return j;
             }
         },
         components: {
@@ -80,6 +112,7 @@
         </ul>
     </div>
     <form id=contact-editor @submit.prevent="updateContact">
+        <div>{{ message }}</div>
         <li>
             <label for="editor-firstname">First name:</label>
             <input id="editor-firstname" type=text v-model="contact.first_name"  />
@@ -113,8 +146,7 @@
             <input id="editor-email" type=text v-model="contact.email"  />
         </li>
         <li>
-            <label for="editor-active">Active:</label>
-            <input id="editor-active" type=checkbox value="1" v-model="contact.active"  />
+            <input type=button id="editor-active" @click="contact.active = !contact.active" :value=" contact.active ? 'Disable contact' : 'Enable contact'"/>
         </li>
         <button>Update contact</button>
     </form>

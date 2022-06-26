@@ -1,5 +1,5 @@
 TODO
-1. Show active
+1. Show active - done
 2. Update contact - done
 3. Validation https://codeigniter.com/user_guide/incoming/controllers.html
 4. Add contact https://vuejs.org/tutorial/#step-8 submit.prevent - done
@@ -22,6 +22,14 @@ PROCESS
 12. Host working but incomplete version, including database
 13. Push to GitHub
 14. Read up on CodeIgniter Validation - poss to use with AJAX?
+15. Finish Show Active
 
 REMEMBER
 1. Hosting - upload everything except .git and Database.php
+2. Switch to production mode
+
+BUGS
+1. Don't click a contact, but type a new one in, add, and then update.  Updates contact with contact_id = 1
+2. Click a contact, overwrite details, add, then update.  Updates contact with id = the one you selected, not the new one
+3. Clicking contact needs to find by ID, not array index - done
+4. contact not set at startup

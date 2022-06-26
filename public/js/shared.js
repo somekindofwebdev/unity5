@@ -1,6 +1,6 @@
-    fetch("/Contacts", { headers: { "Content-Type": "application/json" }})
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    })
+function msg(type, text) {
+    var p = document.getElementById("msg");
+    p.innerHTML = text;
+}
 
+msg(1, "This is working");

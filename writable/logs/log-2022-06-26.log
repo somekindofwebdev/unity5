@@ -1,0 +1,59 @@
+CRITICAL - 2022-06-26 02:09:22 --> Undefined property: stdClass::$active
+in APPPATH/Models/ContactModel.php on line 67.
+ 1 APPPATH/Models/ContactModel.php(67): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/ContactsController.php(63): App\Models\ContactModel->addContact()
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ContactsController->create()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-06-26 02:10:13 --> Undefined property: stdClass::$active
+in APPPATH/Models/ContactModel.php on line 67.
+ 1 APPPATH/Models/ContactModel.php(67): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/ContactsController.php(63): App\Models\ContactModel->addContact()
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ContactsController->create()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-06-26 02:36:50 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::insert_id()
+in APPPATH/Models/ContactModel.php on line 73.
+ 1 APPPATH/Controllers/ContactsController.php(63): App\Models\ContactModel->addContact()
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ContactsController->create()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-06-26 02:37:32 --> Object of class CodeIgniter\Database\MySQLi\Connection could not be converted to string
+in APPPATH/Models/ContactModel.php on line 73.
+ 1 APPPATH/Controllers/ContactsController.php(63): App\Models\ContactModel->addContact()
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ContactsController->create()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-06-26 02:38:00 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::insert_id()
+in APPPATH/Models/ContactModel.php on line 73.
+ 1 APPPATH/Controllers/ContactsController.php(63): App\Models\ContactModel->addContact()
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ContactsController->create()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-06-26 02:51:25 --> Call to undefined method CodeIgniter\Database\MySQLi\Builder::insertID()
+in APPPATH/Models/ContactModel.php on line 73.
+ 1 APPPATH/Controllers/ContactsController.php(63): App\Models\ContactModel->addContact()
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ContactsController->create()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')
+CRITICAL - 2022-06-26 03:01:49 --> Undefined property: stdClass::$postcode
+in APPPATH/Models/ContactModel.php on line 64.
+ 1 APPPATH/Models/ContactModel.php(64): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/ContactsController.php(63): App\Models\ContactModel->addContact()
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ContactsController->create()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Commands/Server/rewrite.php(43): require_once('FCPATH/index.php')

@@ -38,6 +38,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 $routes->resource('Contacts', [ 'websafe' => 1, 'controller' => 'ContactsController']);
+$routes->resource('Validation', [ 'websafe' => 1, 'controller' => 'ValidationController']);
 
 /*
  * --------------------------------------------------------------------

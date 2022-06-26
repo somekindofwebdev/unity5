@@ -70,7 +70,7 @@ class ContactModel extends Model
         // Run the Query
         try {
             $db->table('Contacts')->insert($data);
-            return "Contact added";
+            return json_encode($db->insertID());
         }
         catch (Exception $ex) {
 //            http_response_code(500);

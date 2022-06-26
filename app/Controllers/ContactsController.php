@@ -36,9 +36,11 @@ class ContactsController extends ResourceController
         // Error if contact not received
         if ($contact == null) { return "Contact not received"; }
         
+        // Validate
+        
         // Pass $contact to model for update
         $model = model(ContactModel::class);
-        return $model->updateContact($id, $contact);
+        return $this->response->setJSON($model->updateContact($id, $contact));
         
         // TODO error handling
     }
@@ -47,6 +49,9 @@ class ContactsController extends ResourceController
     public function create() {
         // TODO DRY this
         
+        // Explicitly return JSON
+        header("Content-Type: application/json");
+        
         // Get $contact from request body
         $request = service('request');
         $contact = $request->getJSON();
@@ -54,9 +59,11 @@ class ContactsController extends ResourceController
         // Error if contact not received
         if ($contact == null) { return "Contact not received"; }
         
+        // Validate
+        
         // Pass $contact to model for creation
         $model = model(ContactModel::class);
-        return $model->addContact($contact);
+        return $this->response->setJSON($model->addContact($contact));
     }
 
     // ...
